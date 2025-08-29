@@ -1,9 +1,9 @@
-import React from "react";
-import { navLinks } from "../../constants";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
-function Navbar() {
+import { navLinks } from "../../constants/index.js";
+
+const Navbar = () => {
   useGSAP(() => {
     const navTween = gsap.timeline({
       scrollTrigger: {
@@ -14,24 +14,22 @@ function Navbar() {
 
     navTween.fromTo(
       "nav",
+      { backgroundColor: "transparent" },
       {
-        backgroundColor: "transparent",
-      },
-      {
-        backgroundColor: "#0000050",
+        backgroundColor: "#00000050",
         backgroundFilter: "blur(10px)",
         duration: 1,
         ease: "power1.inOut",
       }
     );
-  }, []);
+  });
 
   return (
     <nav>
-      <div className="">
+      <div>
         <a href="#home" className="flex items-center gap-2">
-          <img src="/images/logo.png" alt="" />
-          <p>Velvet pour</p>
+          <img src="/images/logo.png" alt="logo" />
+          <p>Velvet Pour</p>
         </a>
 
         <ul>
@@ -44,6 +42,5 @@ function Navbar() {
       </div>
     </nav>
   );
-}
-
+};
 export default Navbar;
